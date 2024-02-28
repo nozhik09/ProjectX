@@ -46,10 +46,10 @@ public class Menu {
                     // Возврат книги
                     break;
                 case 6:
-                    displayAvailableBooks();
+//                    displayAvailableBooks();
                     break;
                 case 7:
-                    displayCheckedOutBooks();
+//                    displayCheckedOutBooks();
                     break;
                 case 8:
                     System.out.println("Программа завершена.");
