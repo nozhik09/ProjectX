@@ -1,38 +1,47 @@
 package service;
 
+import RepositoryLayer.BookRepository;
+import model.Book;
 import util.MyArrayList;
 
 import java.util.Scanner;
 
 public class BookService {
 
+    private final BookRepository bookRepository;
 
-    public void addBook() {
-        System.out.println("Book");
+    public BookService(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
+
+    public Book addBook(String title, String author, int id) {
+
 
     }
 
-    public void getAllBooks() {
+    public Book getAllBooks() {
 
     }
 
-    public void searchBook() {
+    public Book searchBook() {
 
     }
 
-    public void takeBook() {
+    public Book takeBook() {
 
     }
 
-    public void returnBook() {
+    public Book returnBook() {
 
     }
-    public void availableBooks(){
+
+    public Book availableBooks() {
 
     }
-public void checkoutBooks(){
 
-}
+    public Book checkoutBooks() {
+
+    }
 
 
 }
