@@ -1,15 +1,10 @@
 package service;
 
-import RepositoryLayer.util.MyList;
-import model.User;
-
-import java.util.ArrayList;
-
-public class Authorize {
+public class UserService {
 
 
 
-//        private MyList<User> users;
+//    private MyList<User> users;
 //
 //        public Authorize() {
 //            this.users = new ArrayList<>();

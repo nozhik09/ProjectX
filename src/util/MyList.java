@@ -1,4 +1,4 @@
-package RepositoryLayer.util;
+package util;
 
 public interface MyList<T> {
 

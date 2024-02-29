@@ -2,7 +2,8 @@ package view;
 
 import java.util.Scanner;
 
-import model.BookList;
+
+import RepositoryLayer.BookRepository;
 
 public class Menu {
 
@@ -34,7 +35,7 @@ public class Menu {
                     // Ввод информации о книге и добавление в библиотеку
                     break;
                 case 2:
-                    BookList.displayAllBooks();
+
                     break;
                 case 3:
                     // Поиск книги

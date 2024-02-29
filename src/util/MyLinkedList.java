@@ -1,4 +1,4 @@
-package RepositoryLayer.util;
+package util;
 
 import java.lang.reflect.Array;
 

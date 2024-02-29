@@ -1,9 +1,9 @@
-package RepositoryLayer.util;
+package util;
 
 
 import java.lang.reflect.Array;
 
-public class MyArrayList<T> implements MyList<T> {
+public class    MyArrayList<T> implements MyList<T> {
 
     private T[] array;
     private int cursor; // присвоено значение по умолчанию 0
