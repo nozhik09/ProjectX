@@ -31,23 +31,22 @@ public class Menu {
     }
 
     public void run() {
-        displayMenu();
+//
 
 
         while (true) {
-
+            displayMenu();
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume the newline character
-
+            scanner.nextLine();
             switch (choice) {
                 case 1:
-//                    System.out.println("Введите автора книги");
-//                    String title = scanner.nextLine();
-//                    System.out.println("Введите название книги");
-//                    String author = scanner.nextLine();
-//                    int id= scanner.nextInt();
-//                    service.addBook(title,author,id);
+                    System.out.println("Введите автора книги");
+                    String title = scanner.nextLine();
+                    System.out.println("Введите название книги");
+                    String author = scanner.nextLine();
+                    scanner.nextLine();
+                    service.addBook(title, author);
 
 
                     // Ввод информации о книге и добавление в библиотеку
@@ -59,9 +58,13 @@ public class Menu {
                     }
 
 
-
                     break;
                 case 3:
+                    System.out.println("Введите искомую книгу: ");
+                    service.searchBook(scanner.nextLine());
+                    scanner.nextLine();
+
+
                     // Поиск книги
                     break;
                 case 4:
@@ -85,8 +88,6 @@ public class Menu {
             }
         }
     }
-
-
 
 
 }

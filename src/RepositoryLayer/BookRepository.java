@@ -13,6 +13,7 @@ public class BookRepository {
     private final AtomicInteger currentId = new AtomicInteger(1);
     private final MyList<Book> books;
 
+
     public BookRepository() {
         this.books = new MyArrayList<>();
         bookList();
@@ -42,6 +43,18 @@ public class BookRepository {
         if (book.getAuthor() == null || book.getTitle() == null) return null;
         books.add(book);
         return book;
+    }
+
+
+    public Book findBook(String title) {
+
+        for (int i = 0; i < books.size(); i++) {
+            Book book = books.get(i);
+            if (book.getTitle().contains(title)){
+            System.out.println("Книга найдена " + book);
+            return book;}
+        }
+        return null;
     }
 }
 
