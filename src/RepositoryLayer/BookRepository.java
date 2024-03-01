@@ -11,9 +11,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class BookRepository {
 
     private final AtomicInteger currentId = new AtomicInteger(1);
-    private MyArrayList<Book> books;
+    private final MyList<Book> books;
 
-    public void BookList() {
+    public BookRepository() {
+        this.books = new MyArrayList<>();
+        bookList();
+    }
+
+    public void bookList() {
         Book book1 = new Book("Мастер и Маргарита", "Михаил Булгаков", currentId.getAndIncrement());
         Book book2 = new Book("Маленький принц", "Антуан де Сент-Экзюпери", currentId.getAndIncrement());
         Book book3 = new Book("Война и мир", "Лев Толстой", currentId.getAndIncrement());
@@ -25,6 +30,18 @@ public class BookRepository {
         Book book9 = new Book("Рассказы", "Антон Чехов", currentId.getAndIncrement());
         Book book10 = new Book("Мёртвые души", "Николай Гоголь", currentId.getAndIncrement());
         books.addAll(book1, book2, book3, book4, book5, book6, book7, book8, book9, book10);
+    }
+
+
+    public MyList<Book> getAllBooks() {
+        return books;
+    }
+
+    public Book addNewBook(String title, String author) {
+        Book book = new Book(title, author, currentId.getAndIncrement());
+        if (book.getAuthor() == null || book.getTitle() == null) return null;
+        books.add(book);
+        return book;
     }
 }
 
