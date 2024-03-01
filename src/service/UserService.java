@@ -51,6 +51,11 @@ public class UserService  implements Interfaces.UserService {
         return activeUser;
     }
 
+    @Override
+    public User authorize(String email, String password) {
+        return null;
+    }
+
 
     // Должен прийти email и password
     public User authorize() {
@@ -65,9 +70,5 @@ public class UserService  implements Interfaces.UserService {
         return user;
     }
 
-    @Override
-    public User authorise(String email, String password) {
-        return null;
-    }
 
 }
