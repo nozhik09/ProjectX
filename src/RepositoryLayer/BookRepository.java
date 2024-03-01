@@ -33,6 +33,9 @@ public class BookRepository {
     }
 
 
+    public void borrowBook(Book bookToBorrow) {
+
+
     public MyList<Book> getAllBooks() {
         return books;
     }
@@ -42,6 +45,7 @@ public class BookRepository {
         if (book.getAuthor() == null || book.getTitle() == null) return null;
         books.add(book);
         return book;
+
     }
 }
 
