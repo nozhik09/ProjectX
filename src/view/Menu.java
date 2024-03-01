@@ -4,9 +4,19 @@ import java.util.Scanner;
 
 
 import RepositoryLayer.BookRepository;
+import model.Book;
+import service.BookService;
+import util.MyList;
 
 public class Menu {
 
+    private final Scanner scanner = new Scanner(System.in);
+
+    private final BookService service;
+
+    public Menu(BookService service) {
+        this.service = service;
+    }
 
     public void displayMenu() {
         System.out.println("1. Добавить книгу");
@@ -20,8 +30,8 @@ public class Menu {
         System.out.print("Выберите опцию: ");
     }
 
-   public void run (){
-        Scanner scanner = new Scanner(System.in);
+    public void run() {
+        displayMenu();
 
 
         while (true) {
@@ -32,9 +42,23 @@ public class Menu {
 
             switch (choice) {
                 case 1:
+//                    System.out.println("Введите автора книги");
+//                    String title = scanner.nextLine();
+//                    System.out.println("Введите название книги");
+//                    String author = scanner.nextLine();
+//                    int id= scanner.nextInt();
+//                    service.addBook(title,author,id);
+
+
                     // Ввод информации о книге и добавление в библиотеку
                     break;
                 case 2:
+                    MyList<Book> booksList = service.getAllBooks();
+                    for (Book book : booksList.toArray()) {
+                        System.out.println(book);
+                    }
+
+
 
                     break;
                 case 3:
@@ -61,4 +85,8 @@ public class Menu {
             }
         }
     }
+
+
+
+
 }

@@ -2,9 +2,8 @@ package service;
 
 import RepositoryLayer.BookRepository;
 import model.Book;
-import util.MyArrayList;
+import util.MyList;
 
-import java.util.Scanner;
 
 public class BookService {
 
@@ -15,33 +14,38 @@ public class BookService {
     }
 
     public Book addBook(String title, String author, int id) {
-        return addBook();
 
+        Book book = bookRepository.addNewBook(title, author);
+        return book;
     }
 
-    public Book getAllBooks() {
-        return getAllBooks();
+    public MyList<Book> getAllBooks() {
+        return bookRepository.getAllBooks();
     }
 
-    public Book searchBook() {
-    return searchBook();
-    }
-
-    public Book takeBook() {
-        return takeBook();
-    }
-
-    public Book returnBook() {
-        return returnBook();
-    }
-
-    public Book availableBooks() {
-        return availableBooks();
-    }
-
-    public Book checkoutBooks() {
-        return checkoutBooks();
-    }
+//    public Book searchBook() {
+//
+//
+//
+//
+//    }
+//
+//    public Book takeBook() {
+//
+//    }
+//
+//    public Book returnBook() {
+//
+//    }
+//
+//    public Book availableBooks() {
+//
+//    }
+//
+//    public Book checkoutBooks() {
+//
+//    }
+ 
 
 
 }
