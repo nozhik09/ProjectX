@@ -15,10 +15,13 @@ public class UserRepository {
     private final AtomicInteger currentId = new AtomicInteger(1);
     public UserRepository(){
         this.users = new MyArrayList<>();
+        initUser();
     }
 
 
-    // метод заполнения начальными или тестовыми данными
+    /** METHOD OF FILLING WITH INITIAL DATA
+     *
+     */
     private void initUser() {
         User user = new User(currentId.getAndIncrement(), "stream11@gmail.com", "Str@ng0ne!26");
         User user1 = new User(currentId.getAndIncrement(), "log1nsga@gmail.com", "Sjwahuew7362!");
@@ -59,4 +62,13 @@ public class UserRepository {
         return users.get(index);
     }
 
+
+    public User getUserByEmail(String email){
+        for (int i = 0; i < users.size(); i++) {
+            User user = users.get(i);
+            if (user.getEmail().contains(email));
+            return user;
+        }
+        return null;
+    }
 }
