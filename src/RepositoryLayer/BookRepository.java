@@ -26,6 +26,9 @@ public class BookRepository {
         Book book10 = new Book("Мёртвые души", "Николай Гоголь", currentId.getAndIncrement());
         books.addAll(book1, book2, book3, book4, book5, book6, book7, book8, book9, book10);
     }
+
+    public void borrowBook(Book bookToBorrow) {
+    }
 }
 
 
