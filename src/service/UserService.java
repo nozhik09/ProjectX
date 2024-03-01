@@ -1,24 +1,74 @@
 package service;
 
-public class UserService {
+import RepositoryLayer.UserRepository;
+import model.User;
+import util.MyList;
+
+public class UserService  implements Interfaces.UserService {
+
+    private User activeUser;
+
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public MyList<User> getAllUsers() {
+        return userRepository.getAllUsers();
+    }
+
+    public User createUser(String email, String password) {
+        boolean isExist = userRepository.isUserEmailExist(email);
+        if (isExist) {
+            return null;
+        }
+        // Мне нужно провалидировать мой email и пароль
+        User user = userRepository.createUser(email, password);
+        return user;
+    }
+
+    public User registerUser(String email, String password) {
+
+        if (email == null || password == null) {
+            System.out.println("Пустой email  или пароль");
+            return null;
+        }
+        if (userRepository.isUserEmailExist(email)){
+            System.out.println("Пользователь с таким email уже существует");
+            return null;
+        }
+
+        //Можно здесь в сервисе написать методы валидации email и password
+        //B случае успешного прохождения - отправляем на запись в хранилище данных
 
 
+        User user = userRepository.createUser(email, password);
+        return user;
+    }
 
-//    private MyList<User> users;
-//
-//        public Authorize() {
-//            this.users = new ArrayList<>();
-//            // Здесь вы можете добавить администратора и других пользователей по умолчанию
-//        }
-//
-//        public boolean authenticateUser(String username, String password) {
-//            for (User user : users) {
-//                if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
-//                    return true; // Аутентификация успешна
-//                }
-//            }
-//            return false; // Аутентификация не удалась
-//
-//
+    public User getActiveUser() {
+        return activeUser;
+    }
+
+    @Override
+    public User authorize(String email, String password) {
+        return null;
+    }
+
+
+    // Должен прийти email и password
+    public User authorize() {
+        //Todo править метод
+//        User user = userRepository.getUserByEmail("test@email.net");
+        // проверка существования пользователя
+        // сверить пароли
+        //и если все ОК-
+
+        User user = userRepository.getRandomUser();
+        activeUser = user;
+        return user;
+    }
+
 
 }
