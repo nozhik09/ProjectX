@@ -2,7 +2,11 @@ package service;
 
 import RepositoryLayer.UserRepository;
 import model.User;
+import util.MyArrayList;
 import util.MyList;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserService  implements Interfaces.UserService {
 
@@ -39,8 +43,6 @@ public class UserService  implements Interfaces.UserService {
             return null;
         }
 
-        //Можно здесь в сервисе написать методы валидации email и password
-        //B случае успешного прохождения - отправляем на запись в хранилище данных
 
 
         User user = userRepository.createUser(email, password);
@@ -53,22 +55,21 @@ public class UserService  implements Interfaces.UserService {
 
     @Override
     public User authorize(String email, String password) {
+        boolean userExists = userRepository.isUserEmailExist(email);
+        MyList<User> users = new MyArrayList<>();
+
+        if (!userExists) {
+            return null; // Пользователь не найден
+        }
+
+
+
         return null;
     }
 
 
     // Должен прийти email и password
-    public User authorize() {
-        //Todo править метод
-//        User user = userRepository.getUserByEmail("test@email.net");
-        // проверка существования пользователя
-        // сверить пароли
-        //и если все ОК-
 
-        User user = userRepository.getRandomUser();
-        activeUser = user;
-        return user;
-    }
 
 
 }
