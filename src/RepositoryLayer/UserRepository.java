@@ -63,6 +63,12 @@ public class UserRepository {
     }
 
 
+
+
+
+
+
+
     public User getUserByEmail(String email){
         for (int i = 0; i < users.size(); i++) {
             User user = users.get(i);
@@ -71,4 +77,5 @@ public class UserRepository {
         }
         return null;
     }
+
 }

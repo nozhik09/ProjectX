@@ -38,7 +38,7 @@ public class Menu {
     }
 
     public void run() {
-        displayMenu();
+//
 
 
 
@@ -47,16 +47,15 @@ public class Menu {
 
         displayMenu();
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume the newline character
-
+            scanner.nextLine();
             switch (choice) {
                 case 1:
-//                    System.out.println("Введите автора книги");
-//                    String title = scanner.nextLine();
-//                    System.out.println("Введите название книги");
-//                    String author = scanner.nextLine();
-//                    int id= scanner.nextInt();
-//                    service.addBook(title,author,id);
+                    System.out.println("Введите автора книги");
+                    String title = scanner.nextLine();
+                    System.out.println("Введите название книги");
+                    String author = scanner.nextLine();
+                    scanner.nextLine();
+                    service.addBook(title, author);
 
 
                     // Ввод информации о книге и добавление в библиотеку
@@ -71,12 +70,20 @@ public class Menu {
                 Так же довавить механизм если книга есть значит выкинуть ошбку что такая книга есть */
                 case 2:
 
-                    //Список всех книг
-                    System.out.println("Список книг которые есть в библиотеке:");
-                    bookService.getAllBooks();
+                    MyList<Book> booksList = service.getAllBooks();
+                    for (Book book : booksList.toArray()) {
+                        System.out.println(book);
+                    }
+
+
                     break;
                 // нужен метод который возвращает список всех книг
                 case 3:
+                    System.out.println("Введите искомую книгу: ");
+                    service.searchBook(scanner.nextLine());
+                    scanner.nextLine();
+
+
                     // Поиск книги
                     System.out.println("Книга найдена!");
                     System.out.println(bookService.getAllBooks() + "Книга свобода!");
@@ -130,8 +137,6 @@ public class Menu {
         System.out.println("8. Выход");
         System.out.print("Выберите опцию: ");
     }
-
-
 
 
 }

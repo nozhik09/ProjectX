@@ -13,7 +13,8 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
-    public Book addBook(String title, String author, int id) {
+
+    public Book addBook(String title, String author) {
 
         Book book = bookRepository.addNewBook(title, author);
         return book;
@@ -23,12 +24,10 @@ public class BookService {
         return bookRepository.getAllBooks();
     }
 
-//    public Book searchBook() {
-//
-//
-//
-//
-//    }
+    public Book searchBook(String title) {
+        return bookRepository.findBook(title);
+
+    }
 //
 //    public Book takeBook() {
 //
