@@ -4,19 +4,14 @@ import java.util.Scanner;
 import RepositoryLayer.BookRepository;
 
 import service.BookService;
-
-public class Menu {
-    BookService bookService = new BookService(new BookRepository());
-
-   public void run (){
-        Scanner scanner = new Scanner(System.in);
-
 import model.Book;
 import service.BookService;
 import util.MyList;
 
-public class Menu {
 
+
+public class Menu {
+    BookService bookService = new BookService(new BookRepository());
     private final Scanner scanner = new Scanner(System.in);
 
     private final BookService service;
@@ -25,17 +20,7 @@ public class Menu {
         this.service = service;
     }
 
-    public void displayMenu() {
-        System.out.println("1. Добавить книгу");
-        System.out.println("2. Вывести список всех книг");
-        System.out.println("3. Поиск книги");
-        System.out.println("4. Взять книгу");
-        System.out.println("5. Вернуть книгу");
-        System.out.println("6. Список свободных книг");
-        System.out.println("7. Список взятых книг");
-        System.out.println("8. Выход");
-        System.out.print("Выберите опцию: ");
-    }
+
 
     public void run() {
 //
@@ -56,15 +41,6 @@ public class Menu {
                     String author = scanner.nextLine();
                     scanner.nextLine();
                     service.addBook(title, author);
-
-
-                    // Ввод информации о книге и добавление в библиотеку
-                    System.out.print("Введите название книги: ");
-                    String title = scanner.nextLine();
-                    System.out.print("Введите имя автора: ");
-                    String author = scanner.nextLine();
-                    bookService.addBook(title, author, 1);
-                    System.out.println("Книга была успешно добавленна");
                     break;
                 /* Нужен метод добавления книги, который принимает только название книги и автора книги
                 Так же довавить механизм если книга есть значит выкинуть ошбку что такая книга есть */
@@ -90,19 +66,19 @@ public class Menu {
                     break;
 //                    Нужен метод который возвращает список книг отфильтрованный по строке поиска
                 case 4:
-                    // Взятие книги
-                    System.out.println("Вы успешно взяли книгу!");
-                    String borrowTitle = scanner.nextLine();
-                    bookService.takeBook();
-                    break;
+//                    // Взятие книги
+//                    System.out.println("Вы успешно взяли книгу!");
+//                    String borrowTitle = scanner.nextLine();
+//                    bookService.takeBook();
+//                    break;
 //                    Нужен метод который принимает в себя айди книги которую берут, айди пользока который берёт книгу
 //                      Если книга уже кем-то взята - выкинуть ошибку, если книга свободна - пометить что её взял данный пользак
                 case 5:
-                    // Возврат книги
-                    System.out.println("Вы успешно вернули книгу!");
-                    String returnTitle = scanner.nextLine();
-                    bookService.returnBook();
-                    break;
+//                    // Возврат книги
+//                    System.out.println("Вы успешно вернули книгу!");
+//                    String returnTitle = scanner.nextLine();
+//                    bookService.returnBook();
+//                    break;
 //                Нужен метод который принимает в себя айди книги которую возвращают, айди пользока который бвозвращает книгу
 //                Если книга была взята данным пользаком - посетить что книга стала свободна
 //                если книга была взята другим пользаком - выкинуть ошибку что у него небыло этой книги

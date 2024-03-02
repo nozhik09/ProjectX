@@ -34,7 +34,7 @@ public class BookRepository {
     }
 
 
-    public void borrowBook(Book bookToBorrow) {
+
 
 
     public MyList<Book> getAllBooks() {
@@ -62,13 +62,12 @@ public class BookRepository {
         return null;
     }
 
-    public Book takeBook(){
+//    public Book takeBook() {
+//
+//
+//    }
 
 
-
-
-
-    }
 
 
 
