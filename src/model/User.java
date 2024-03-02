@@ -1,5 +1,10 @@
 package model;
 
+import RepositoryLayer.UserRepository;
+
+import static validators.UserValidator.isEmailValid;
+import static validators.UserValidator.isPasswordValid;
+
 public class User {
 
 private String password;
@@ -19,6 +24,7 @@ private int id;
     }
 
     public void setPassword(String password) {
+        if (isPasswordValid(password))
         this.password = password;
     }
 
@@ -27,7 +33,9 @@ private int id;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        if (isEmailValid(email)) {
+            this.email = email;
+        }
     }
 
 
@@ -42,7 +50,15 @@ private int id;
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+
+
+    @Override
+    public String toString() {
+        return "User[ " +
+                "password = " + password + '\'' +
+                ", email = " + email + '\'' +
+                ", role= " + role +
+                ", id= " + id +
+                " ]";
     }
 }
