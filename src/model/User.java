@@ -12,7 +12,7 @@ private String email;
 private Role role;
 private int id;
 
-    public User(int id, String password, String email) {
+    public User(int id, String email, String password) {
         this.password = password;
         this.email = email;
         this.role=Role.USER;
@@ -54,11 +54,10 @@ private int id;
 
     @Override
     public String toString() {
-        return "User[ " +
-                "password = " + password + '\'' +
-                ", email = " + email + '\'' +
-                ", role= " + role +
-                ", id= " + id +
-                " ]";
+        return "User:" + id + "[ " +
+                 password + ' ' +
+                 email + ' ' +
+                 role + ' ' +
+                " ]" + "\n";
     }
 }
