@@ -2,6 +2,7 @@ package view;
 
 import java.util.Scanner;
 import RepositoryLayer.BookRepository;
+
 import service.BookService;
 
 public class Menu {
@@ -9,6 +10,36 @@ public class Menu {
 
    public void run (){
         Scanner scanner = new Scanner(System.in);
+
+import model.Book;
+import service.BookService;
+import util.MyList;
+
+public class Menu {
+
+    private final Scanner scanner = new Scanner(System.in);
+
+    private final BookService service;
+
+    public Menu(BookService service) {
+        this.service = service;
+    }
+
+    public void displayMenu() {
+        System.out.println("1. Добавить книгу");
+        System.out.println("2. Вывести список всех книг");
+        System.out.println("3. Поиск книги");
+        System.out.println("4. Взять книгу");
+        System.out.println("5. Вернуть книгу");
+        System.out.println("6. Список свободных книг");
+        System.out.println("7. Список взятых книг");
+        System.out.println("8. Выход");
+        System.out.print("Выберите опцию: ");
+    }
+
+    public void run() {
+        displayMenu();
+
 
 
 
@@ -20,6 +51,14 @@ public class Menu {
 
             switch (choice) {
                 case 1:
+//                    System.out.println("Введите автора книги");
+//                    String title = scanner.nextLine();
+//                    System.out.println("Введите название книги");
+//                    String author = scanner.nextLine();
+//                    int id= scanner.nextInt();
+//                    service.addBook(title,author,id);
+
+
                     // Ввод информации о книге и добавление в библиотеку
                     System.out.print("Введите название книги: ");
                     String title = scanner.nextLine();
@@ -31,6 +70,7 @@ public class Menu {
                 /* Нужен метод добавления книги, который принимает только название книги и автора книги
                 Так же довавить механизм если книга есть значит выкинуть ошбку что такая книга есть */
                 case 2:
+
                     //Список всех книг
                     System.out.println("Список книг которые есть в библиотеке:");
                     bookService.getAllBooks();
@@ -90,4 +130,8 @@ public class Menu {
         System.out.println("8. Выход");
         System.out.print("Выберите опцию: ");
     }
+
+
+
+
 }
