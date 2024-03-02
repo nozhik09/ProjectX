@@ -4,9 +4,8 @@ import util.MyArrayList;
 import model.Book;
 import util.MyList;
 
-import java.io.*;
-import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
+
 
 public class BookRepository {
 
@@ -34,9 +33,6 @@ public class BookRepository {
     }
 
 
-    public void borrowBook(Book bookToBorrow) {
-
-
     public MyList<Book> getAllBooks() {
         return books;
     }
@@ -54,35 +50,18 @@ public class BookRepository {
 
         for (int i = 0; i < books.size(); i++) {
             Book book = books.get(i);
-            if (book.getTitle().contains(title)){
-            System.out.println("Книга найдена " + book);
-            return book;}
+            if (book.getTitle().contains(title)) {
+                System.out.println("Книга найдена " + book);
+                return book;
+            }
         }
         System.out.println("Такой книги не существует: ");
         return null;
     }
 
-    public Book takeBook(){
-
-
-
-
-
-    }
-
-
+    //    public Book takeBook() {
+    //
+    //
+    //    }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
