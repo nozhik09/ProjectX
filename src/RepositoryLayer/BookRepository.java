@@ -31,7 +31,7 @@
             Book book8 = new Book("Сто лет одиночества", "Габриэль Гарсиа Маркес", currentId.getAndIncrement(), true);
             Book book9 = new Book("Рассказы", "Антон Чехов", currentId.getAndIncrement(), true);
             Book book10 = new Book("Мёртвые души", "Николай Гоголь", currentId.getAndIncrement(), true);
-            Book book11 = new Book("Собачье сердце", "Михаил Булгаков", currentId.getAndIncrement(), true);
+            Book book11 = new Book("Цветы для Элджернона", "Даниель Кейс", currentId.getAndIncrement(), true);
             books.addAll(book1, book2, book3, book4, book5, book6, book7, book8, book9, book10 , book11);
         }
 
@@ -53,11 +53,11 @@
                 boolean bookFound =false;
                 Book book = books.get(i);
                 if (book.getTitle().contains(searchTerm) || book.getAuthor().contains(searchTerm)) {
-                    System.out.println("Книга найдена " + book);
                     bookFound=true;
+                    return book;
                 }
             }
-            System.out.println("Такой книги не существует: ");
+
             return null;
         }
 
@@ -76,10 +76,10 @@
 
             public Book takeBook(int bookId) {
                 Book b = findBookById(bookId);
-                if (b.isAvailable()==false){
-                    return null;
-                }
-                else  {
+//                if (b.isAvailable()==false){
+//                    return b;
+//                }
+                 if (b.isAvailable()) {
                     b.setAvailable(false);
                 }
                 return b;
@@ -93,6 +93,7 @@
                     getAvailableBooks.add(book);
 
                 }
+
             }
             return getAvailableBooks;
         }
@@ -116,10 +117,10 @@
 
             for (int i = 0; i < booksByReader().size(); i++) {
                 Book book = booksByReader().get(i);
-                if (book.getBookId() == bookId) {
+                if (book.isAvailable()==false) {
 
                     book.setAvailable(true);
-                    booksByReader().remove(i);
+//                    booksByReader().remove(i);
 
                     return book;
                 }

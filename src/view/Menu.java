@@ -7,7 +7,6 @@ import RepositoryLayer.UserRepository;
 import model.User;
 import service.BookService;
 import model.Book;
-import service.BookService;
 import service.UserService;
 import util.MyLinkedList;
 import util.MyList;
@@ -91,16 +90,22 @@ public class Menu {
                 searchBookAction();
                 break;
             case GET_BOOK:
+                takeBookAction();
                 break;
             case RETURN_BOOK:
+                returnBookAction();
                 break;
             case BOOKS_BY_READER:
+                booksByReaderAction();
                 break;
             case DISPLAY_ALL_AVAILABLE_BOOKS:
+                displayAllAvailableBooksAction();
                 break;
             case DISPLAY_TAKEN_BOOKS:
+                displayTakenBooksAction();
                 break;
             case EXIT:
+                exitAction();
                 break;
         }
     }
@@ -215,16 +220,16 @@ public class Menu {
             System.out.println("Книга не найдена");
         } else {
             System.out.println("Вот ваша книга: ");
-            System.out.printf("%s %s %d", book.getTitle(), book.getAuthor(), book.getBookId());
+            System.out.printf("%s %s |id: %d", book.getTitle(), book.getAuthor(), book.getBookId());
         }
     }
     private  void takeBookAction() {
         System.out.println("Напишите ID книги которую хотите взять:");
-        String search = scanner.nextLine();
-        Book book = bookService.searchBook(search);
+        int search = scanner.nextInt();
+        Book book = bookService.takeBook(search);
         if (book == null) {
             System.out.println("Книга не найдена");
-        } else if (book.isAvailable()) {
+        } else if (!book.isAvailable()) {
             bookService.takeBook(book.getBookId());
             System.out.println("Книга успешно взята!");
         } else {
@@ -234,13 +239,13 @@ public class Menu {
     }
     private void returnBookAction() {
         System.out.println("Напишите название книги которую хотите вернуть:");
-        String returnBook = scanner.nextLine();
-        Book book = bookService.searchBook(returnBook);
+        int returnBook = scanner.nextInt();
+        Book book = bookService.serchBookByID(returnBook);
         if (book == null) {
             System.out.println("Книга не найдена");
         } else if (!book.isAvailable()) {
             //TODO использовать метод когда будет готов
-//            bookService.takeBook(book.getBookId());
+            bookService.returnBook(book.getBookId());
             System.out.println("Книга успешно возвращена!");
         } else {
             System.out.println("Книга уже в библиотеке");
@@ -255,14 +260,14 @@ public class Menu {
     }
     private void displayAllAvailableBooksAction() {
         System.out.println("Все доступные книги в библиотеке:");
-        MyList<Book> books = bookService.availableBooks();
+        MyList<Book> books = bookService.freeBooks();
         for (int i = 0; i < books.size(); i++) {
             System.out.println(books.get(i));
         }
     }
     private  void displayTakenBooksAction() {
         System.out.println("Все занятые книги:");
-        MyList<Book> books = bookService.checkoutBooks();
+        MyList<Book> books = bookService.booksByRead();
         for (int i = 0; i < books.size(); i++) {
             System.out.println(books.get(i));
         }

@@ -31,6 +31,14 @@ public class BookService {
 
     }
 
+
+
+    public Book serchBookByID(int bookId){
+        return bookRepository.findBookById(bookId);
+
+
+    }
+
     //TODO Испаравить
     public Book takeBook(int bookID) {
 

@@ -23,7 +23,7 @@ public class UserRepository {
      *
      */
     private void initUser() {
-        User user = new User(currentId.getAndIncrement(), "stream11@gmail.com", "Str@ng0ne!26");
+        User user = new User(currentId.getAndIncrement(), "admin", "admin");
         User user1 = new User(currentId.getAndIncrement(), "log1nsga@gmail.com", "Sjwahuew7362!");
         User user2 = new User(currentId.getAndIncrement(), "vindicator42@yahoo.com", "ospdiaiwuaoDAW3821@");
         User user3 = new User(currentId.getAndIncrement(), "college.swing@aol.com", "JAhsdhkwa2183@321dsa");

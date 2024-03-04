@@ -275,7 +275,7 @@ public class MyLinkedList<T> implements MyList<T> {
         }
 else {
     cursor=last;
-            for (int i = size-1; i > index ; i++) {
+            for (int i = size-1; i > index ; i--) {
                 cursor=cursor.previous;
             }
 
