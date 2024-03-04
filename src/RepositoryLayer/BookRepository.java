@@ -107,6 +107,23 @@ public class BookRepository {
         return booksByReader;
     }
 
+    public Book returnBook(int bookId){
+        Book book=findBookById(bookId);
+        if (book != null && !book.isAvailable()) {
+            book.setAvailable(true);
+            return book;
+        } else {
+            return null;
+        }
+
+
+
+
+    }
+
+
+
+
 
 }
 
