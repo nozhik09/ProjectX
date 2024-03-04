@@ -51,19 +51,13 @@ public class UserRepository {
     public User createUser(String email, String password) {
         User user = new User(currentId.getAndIncrement(), email, password);
         if (user.getEmail() == null || user.getPassword() == null) return null;
+        user.setRole(Role.USER);
         users.add(user);
         return user;
 
     }
 
-    public User getUserByEmail(String email){
-        for (int i = 0; i < users.size(); i++) {
-            User user = users.get(i);
-            if (user.getEmail().equals(email));
-            return user;
-        }
-        return null;
-    }
+
 
     public User isRegistered(String email, String password) {
 

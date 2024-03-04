@@ -3,7 +3,6 @@ package service;
 import Interfaces.UserServiceInterface;
 import RepositoryLayer.UserRepository;
 import model.User;
-import util.MyArrayList;
 import util.MyList;
 
 public class UserService implements UserServiceInterface {
@@ -11,8 +10,6 @@ public class UserService implements UserServiceInterface {
     private User activeUser;
 
     private final UserRepository userRepository;
-    private String email;
-    private String password;
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -22,18 +19,13 @@ public class UserService implements UserServiceInterface {
         return userRepository.getAllUsers();
     }
 
-    public User createUser(String email, String password) {
-        boolean isExist = userRepository.isUserEmailExist(email);
-        if (isExist) {
-            return null;
+
+
+    @Override
+    public User getActiveUser(String email, String password) {
+        if (activeUser == null) {
+            activeUser = authorize(email, password);
         }
-        // Мне нужно провалидировать мой email и пароль
-        User user = userRepository.createUser(email, password);
-        return user;
-    }
-
-
-    public User getActiveUser() {
         return activeUser;
     }
 
@@ -49,7 +41,7 @@ public class UserService implements UserServiceInterface {
 }
 
 
-    // Должен прийти email и password
+
 
 
 
