@@ -4,12 +4,16 @@ public class Book {
 
     private String title;
     private String author;
-    private int id;
+    private int bookId;
 
-    public Book(String title, String author, int id) {
+    private boolean isAvailable;
+
+    public Book(String title, String author, int id , boolean isAvailable) {
         this.title = title;
         this.author = author;
-        this.id = id;
+        this.bookId = id;
+        this.isAvailable =isAvailable;
+
     }
 
     public String getTitle() {
@@ -28,12 +32,20 @@ public class Book {
         this.author = author;
     }
 
-    public int getId() {
-        return id;
+    public int getBookId() {
+        return bookId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        this.isAvailable = available;
     }
 
     @Override
@@ -41,7 +53,9 @@ public class Book {
         return "Book{" +
                 "title='" + title + '\'' +
                 ", author='" + author + '\'' +
-                ", id=" + id +
+                ", id=" + bookId +
                 '}';
     }
+
+
 }

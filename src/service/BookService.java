@@ -2,6 +2,8 @@ package service;
 
 import RepositoryLayer.BookRepository;
 import model.Book;
+import model.Reader;
+import model.User;
 import util.MyList;
 
 
@@ -28,8 +30,27 @@ public class BookService {
         return bookRepository.findBook(title);
 
     }
-//
-//    public Book takeBook() {
+//TODO Испаравить
+   public Book takeBook(int bookID) {
+
+      return bookRepository.takeBook(bookID);
+
+
+
+   }
+
+
+    public MyList<Book> freeBooks() {
+        return bookRepository.getAvailableBooks();
+    }
+
+
+
+    public MyList<Book> booksByRead() {
+        return bookRepository.booksByReader();
+    }
+
+
 //
 //    }
 //
