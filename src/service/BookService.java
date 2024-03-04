@@ -30,14 +30,14 @@ public class BookService {
         return bookRepository.findBook(title);
 
     }
-//TODO Испаравить
-   public Book takeBook(int bookID) {
 
-      return bookRepository.takeBook(bookID);
+    //TODO Испаравить
+    public Book takeBook(int bookID) {
+
+        return bookRepository.takeBook(bookID);
 
 
-
-   }
+    }
 
 
     public MyList<Book> freeBooks() {
@@ -45,18 +45,17 @@ public class BookService {
     }
 
 
-
     public MyList<Book> booksByRead() {
         return bookRepository.booksByReader();
     }
 
 
-//
+    //
 //    }
 //
-//    public Book returnBook() {
-//
-//    }
+    public void returnBook(int bookId) {
+        bookRepository.returnBook(bookId);
+    }
 //
 //    public Book availableBooks() {
 //
@@ -65,7 +64,6 @@ public class BookService {
 //    public Book checkoutBooks() {
 //
 //    }
-
 
 
 }
