@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class UserRepository {
 
     private final MyList<User> users;
-
+    private User authorizedUser = null;
     private final AtomicInteger currentId = new AtomicInteger(1);
     public UserRepository(){
         this.users = new MyArrayList<>();
@@ -56,24 +56,41 @@ public class UserRepository {
 
     }
 
-    public User getRandomUser() {
-        Random random = new Random();
-        int index = random.nextInt(users.size());
-        return users.get(index);
-    }
-
-
-
-
-
-
-
-
     public User getUserByEmail(String email){
         for (int i = 0; i < users.size(); i++) {
             User user = users.get(i);
-            if (user.getEmail().contains(email));
+            if (user.getEmail().equals(email));
             return user;
+        }
+        return null;
+    }
+
+    public User isRegistered(String email, String password) {
+
+        if (email == null || password == null) {
+            System.out.println("Пустой email  или пароль");
+            return null;
+        }
+        if (isUserEmailExist(email)){
+            System.out.println("Пользователь с таким email уже существует");
+            return null;
+        }
+
+        User user = createUser(email, password);
+
+        return user;
+    }
+
+    public User isAuthorized(String email, String password){
+        if (email == null || password == null){
+            return null;
+        }
+        for (int i = 0; i < users.size(); i++) {
+            User user = users.get(i);
+            if (user.getEmail().equals(email) && user.getPassword().equals(password)){
+                authorizedUser = user;
+                return authorizedUser;
+            }
         }
         return null;
     }
