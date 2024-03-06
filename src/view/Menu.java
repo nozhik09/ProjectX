@@ -70,6 +70,7 @@ public class Menu {
         scanner.nextLine();
         MenuItem menuItem = menu.get(choice - 1);
         menuAction(menuItem);
+        scanner.nextLine();
     }
 
     private void menuAction(MenuItem menuItem) {

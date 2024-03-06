@@ -4,7 +4,11 @@ import RepositoryLayer.BookRepository;
 import model.Book;
 import model.Reader;
 import model.User;
+import util.MyArrayList;
 import util.MyList;
+
+import java.util.Arrays;
+import java.util.Comparator;
 
 
 public class BookService {
@@ -72,6 +76,17 @@ public class BookService {
 //    public Book checkoutBooks() {
 //
 //    }
+
+    public MyList<Book> getSorted(Comparator<Book> comparator){
+
+        Book[] books = bookRepository.getAllBooks().toArray();
+        Arrays.sort(books, comparator);
+        MyList<Book> result = new MyArrayList<>(books);
+        return result;
+    }
+
+
+
 
 
 }
